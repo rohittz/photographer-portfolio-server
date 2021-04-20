@@ -15,6 +15,13 @@ const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology:
 client.connect(err => {
     const adminList = client.db(process.env.DB_NAME).collection("admins");
     const customerList = client.db(process.env.DB_NAME).collection("customers");
+    app.post('/addadmin', (req, res) => {
+        const newAdminInfo = req.body;
+        adminList.insertOne(newAdminInfo)
+            .then(result => {
+                res.send(result.insertedCount > 0);
+            })
+    })
     //getting admin list to to recognize the logged in user
 
 })
