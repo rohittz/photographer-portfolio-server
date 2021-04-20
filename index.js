@@ -24,10 +24,8 @@ client.connect(err => {
     })
     //getting admin list to to recognize the logged in user
     app.get('/admins', (req, res) => {
-        adminList.find({ adminEmail: req.query.email })
+        adminList.find({})
             .toArray((err, documents) => {
-                console.log(err);
-                console.log(documents);
                 res.send(documents);
             })
     })
