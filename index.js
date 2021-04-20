@@ -26,7 +26,9 @@ client.connect(err => {
     app.get('/admins', (req, res) => {
         adminList.find({ adminEmail: req.query.email })
             .toArray((err, documents) => {
-                res.status(200).send(documents);
+                console.log(err);
+                console.log(documents);
+                res.send(documents);
             })
     })
 
